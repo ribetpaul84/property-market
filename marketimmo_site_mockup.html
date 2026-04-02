@@ -1,0 +1,313 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@400;500&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --brand:#1A3C5E;
+    --brand-light:#2A5F8F;
+    --gold:#C9A84C;
+    --gold-light:#F0D898;
+    --bg:#F7F5F0;
+    --white:#FFFFFF;
+    --text:#1C1C1C;
+    --text-muted:#6B6B6B;
+    --border:rgba(26,60,94,0.12);
+  }
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:15px}
+  h1,h2,h3,h4{font-family:'Playfair Display',serif}
+
+  .nav{background:var(--brand);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+  .nav-logo{color:var(--white);font-family:'Playfair Display',serif;font-size:1.3rem;letter-spacing:0.04em}
+  .nav-logo span{color:var(--gold)}
+  .nav-links{display:flex;gap:1.5rem;align-items:center}
+  .nav-links a{color:rgba(255,255,255,0.75);font-size:13px;text-decoration:none;transition:color 0.2s}
+  .nav-links a:hover{color:var(--white)}
+  .nav-cta{background:var(--gold);color:var(--brand);font-size:13px;font-weight:500;padding:8px 18px;border-radius:6px;text-decoration:none;transition:opacity 0.2s}
+  .nav-cta:hover{opacity:0.85}
+
+  .hero{background:var(--brand);padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-60px;right:-80px;width:320px;height:320px;border-radius:50%;background:rgba(201,168,76,0.08);pointer-events:none}
+  .hero::after{content:'';position:absolute;bottom:-40px;left:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.04);pointer-events:none}
+  .hero-tag{display:inline-block;background:rgba(201,168,76,0.18);color:var(--gold-light);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:1.5rem}
+  .hero h1{color:var(--white);font-size:2.6rem;line-height:1.2;max-width:680px;margin:0 auto 1.2rem}
+  .hero h1 em{color:var(--gold);font-style:normal}
+  .hero p{color:rgba(255,255,255,0.7);font-size:1.05rem;max-width:520px;margin:0 auto 2.2rem;line-height:1.7}
+  .hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+  .btn-primary{background:var(--gold);color:var(--brand);font-weight:500;padding:13px 28px;border-radius:8px;text-decoration:none;font-size:14px;transition:opacity 0.2s}
+  .btn-primary:hover{opacity:0.88}
+  .btn-secondary{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.3);font-weight:400;padding:13px 28px;border-radius:8px;text-decoration:none;font-size:14px;transition:border-color 0.2s}
+  .btn-secondary:hover{border-color:rgba(255,255,255,0.7)}
+  .hero-stats{display:flex;justify-content:center;gap:2.5rem;margin-top:3.5rem;flex-wrap:wrap}
+  .stat{text-align:center}
+  .stat-num{color:var(--gold);font-family:'Playfair Display',serif;font-size:2rem}
+  .stat-label{color:rgba(255,255,255,0.55);font-size:12px;margin-top:3px}
+
+  .section{padding:4rem 2rem;max-width:900px;margin:0 auto}
+  .section-tag{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:0.6rem}
+  .section-title{font-size:1.9rem;color:var(--brand);margin-bottom:0.8rem;line-height:1.25}
+  .section-sub{color:var(--text-muted);line-height:1.7;max-width:560px;font-size:0.97rem}
+
+  .problem-box{background:var(--white);border:0.5px solid var(--border);border-radius:12px;padding:2rem;margin-top:2.5rem}
+  .problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin-top:1.5rem}
+  .problem-item{background:var(--bg);border-radius:8px;padding:1.2rem;border-left:3px solid #E24B4A}
+  .problem-item h4{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#A32D2D;margin-bottom:6px}
+  .problem-item p{font-size:12px;color:var(--text-muted);line-height:1.6}
+  .arrow-down{text-align:center;padding:1rem 0;color:var(--gold);font-size:1.5rem}
+
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:1rem;margin-top:2rem}
+  .service-card{background:var(--white);border:0.5px solid var(--border);border-radius:12px;padding:1.5rem;transition:border-color 0.2s}
+  .service-card:hover{border-color:var(--brand-light)}
+  .service-icon{width:44px;height:44px;background:rgba(26,60,94,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+  .service-card h3{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--brand);margin-bottom:6px}
+  .service-card p{font-size:12px;color:var(--text-muted);line-height:1.6}
+
+  .plans-wrap{background:var(--brand);padding:4rem 2rem}
+  .plans-inner{max-width:900px;margin:0 auto}
+  .plans-inner .section-title{color:var(--white)}
+  .plans-inner .section-sub{color:rgba(255,255,255,0.6)}
+  .plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:2rem}
+  .plan-card{background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.12);border-radius:12px;padding:1.8rem;position:relative}
+  .plan-card.featured{background:var(--white);border-color:var(--gold)}
+  .plan-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--brand);font-size:11px;font-weight:500;padding:4px 14px;border-radius:20px;white-space:nowrap}
+  .plan-name{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold);margin-bottom:0.4rem}
+  .plan-card.featured .plan-name{color:var(--brand)}
+  .plan-price{font-size:2rem;font-family:'Playfair Display',serif;color:var(--white);margin-bottom:0.2rem}
+  .plan-card.featured .plan-price{color:var(--brand)}
+  .plan-period{font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:1.2rem}
+  .plan-card.featured .plan-period{color:var(--text-muted)}
+  .plan-features{list-style:none;margin-bottom:1.5rem}
+  .plan-features li{font-size:12px;color:rgba(255,255,255,0.75);padding:5px 0;border-bottom:0.5px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:8px}
+  .plan-card.featured .plan-features li{color:var(--text);border-bottom-color:var(--border)}
+  .plan-features li::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+  .plan-cta{display:block;text-align:center;padding:10px;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;background:rgba(201,168,76,0.18);color:var(--gold-light);transition:background 0.2s}
+  .plan-cta:hover{background:rgba(201,168,76,0.3)}
+  .plan-card.featured .plan-cta{background:var(--brand);color:var(--white)}
+
+  .avantages-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:2rem}
+  .avantage{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:0.5px solid var(--border);border-radius:10px;padding:1.2rem}
+  .avantage-num{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--gold);line-height:1;flex-shrink:0}
+  .avantage h4{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--brand);margin-bottom:4px}
+  .avantage p{font-size:12px;color:var(--text-muted);line-height:1.6}
+
+  .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:2rem}
+  .blog-card{background:var(--white);border:0.5px solid var(--border);border-radius:12px;overflow:hidden}
+  .blog-thumb{height:120px;display:flex;align-items:center;justify-content:center;font-size:2rem}
+  .blog-body{padding:1.2rem}
+  .blog-cat{font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;font-weight:500;margin-bottom:6px}
+  .blog-card h3{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--brand);margin-bottom:6px;line-height:1.5}
+  .blog-card p{font-size:12px;color:var(--text-muted);line-height:1.55}
+
+  .cta-band{background:var(--gold);padding:3rem 2rem;text-align:center}
+  .cta-band h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--brand);margin-bottom:0.6rem}
+  .cta-band p{color:rgba(26,60,94,0.7);margin-bottom:1.8rem;font-size:0.97rem}
+  .btn-dark{background:var(--brand);color:var(--white);padding:13px 30px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:500;display:inline-block;transition:opacity 0.2s}
+  .btn-dark:hover{opacity:0.85}
+
+  .footer{background:#111D2A;padding:2rem;text-align:center}
+  .footer-logo{font-family:'Playfair Display',serif;color:var(--white);font-size:1.1rem;margin-bottom:0.5rem}
+  .footer-logo span{color:var(--gold)}
+  .footer p{font-size:12px;color:rgba(255,255,255,0.35)}
+
+  svg.ico{width:22px;height:22px;fill:var(--brand)}
+</style>
+
+<nav class="nav">
+  <div class="nav-logo">MARKET<span>'</span>IMMO</div>
+  <div class="nav-links">
+    <a href="#">Services</a>
+    <a href="#">Formules</a>
+    <a href="#">Blog</a>
+    <a href="#">Contact</a>
+    <a href="#" class="nav-cta">Demander une démo</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-tag">Spécialiste des annonces immobilières — Montpellier & Hérault</div>
+  <h1>Vos annonces méritent mieux<br>qu'un <em>stagiaire</em></h1>
+  <p>Rédaction, photographie professionnelle, plan 3D et home staging virtuel. Un seul prestataire. Des annonces qui vendent plus vite.</p>
+  <div class="hero-btns">
+    <a href="#" class="btn-primary">Demander une démo gratuite</a>
+    <a href="#" class="btn-secondary">Voir nos formules →</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">3×</div><div class="stat-label">plus de contacts avec des photos pro</div></div>
+    <div class="stat"><div class="stat-num">48h</div><div class="stat-label">délai de livraison garanti</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">dédié aux agences immobilières</div></div>
+  </div>
+</section>
+
+<div class="section">
+  <div class="section-tag">Le problème</div>
+  <div class="section-title">L'annonce immobilière, parent pauvre de l'agence</div>
+  <div class="section-sub">Entre le photographe à rappeler, le rédacteur à briefer et le stagiaire qui fait de son mieux… le résultat est souvent décevant.</div>
+  <div class="problem-box">
+    <div class="problem-grid">
+      <div class="problem-item"><h4>Photos amateur</h4><p>Prises avec un smartphone, mal cadrées, sans retouche. Le bien est dévalorisé avant même la visite.</p></div>
+      <div class="problem-item"><h4>Annonces mal rédigées</h4><p>Descriptions vides, sans storytelling ni optimisation SEO. Les portails n'affichent pas vos biens en priorité.</p></div>
+      <div class="problem-item"><h4>Trop d'interlocuteurs</h4><p>Photographe, rédacteur, graphiste… Chaque annonce est un projet à gérer. Chronophage et coûteux.</p></div>
+      <div class="problem-item"><h4>Pas de plan 3D</h4><p>Les acheteurs veulent se projeter. Sans plan, la moitié des prospects passent à l'annonce suivante.</p></div>
+    </div>
+  </div>
+  <div class="arrow-down">↓</div>
+  <div style="background:rgba(26,60,94,0.06);border-radius:12px;padding:1.5rem;border-left:4px solid var(--brand);text-align:center">
+    <div style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--brand);margin-bottom:6px">La solution : MARKET'IMMO</div>
+    <p style="font-size:13px;color:var(--text-muted)">Un seul abonnement. Un interlocuteur unique. Toutes vos annonces livrées en 48h, prêtes à publier.</p>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="section-tag">Nos services</div>
+  <div class="section-title">Tout ce dont vos annonces ont besoin</div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M12 15.5A3.5 3.5 0 018.5 12 3.5 3.5 0 0112 8.5a3.5 3.5 0 013.5 3.5 3.5 3.5 0 01-3.5 3.5m7.43-2.08c.04-.3.07-.61.07-.92 0-.31-.03-.62-.07-.92l2-1.56c.18-.14.23-.41.12-.61l-1.9-3.28c-.12-.22-.37-.3-.59-.22l-2.36.95a6.97 6.97 0 00-1.61-.93l-.36-2.51A.49.49 0 0014 4h-4a.49.49 0 00-.49.42l-.36 2.51a7.1 7.1 0 00-1.61.93l-2.36-.95c-.22-.08-.47 0-.59.22L2.7 10.38c-.12.2-.06.47.12.61l2 1.56c-.04.3-.07.62-.07.93 0 .31.03.61.07.91l-2 1.57c-.18.14-.23.41-.12.61l1.9 3.28c.12.22.37.3.59.22l2.36-.95c.5.35 1.04.65 1.61.93l.36 2.51c.06.28.28.42.49.42h4c.21 0 .43-.14.49-.42l.36-2.51a7.1 7.1 0 001.61-.93l2.36.95c.22.08.47 0 .59-.22l1.9-3.28c.12-.2.06-.47-.12-.61l-2-1.57z"/></svg>
+      </div>
+      <h3>Photographie professionnelle</h3>
+      <p>Shooting sur site, retouche avancée, mise en valeur de chaque pièce. Jusqu'à 25 photos livrées.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 3a4 4 0 110 8 4 4 0 010-8zm0 10c-2.67 0-8 1.34-8 4v1h16v-1c0-2.66-5.33-4-8-4z"/></svg>
+      </div>
+      <h3>Rédaction d'annonces</h3>
+      <p>Titre accrocheur, description optimisée SEO, storytelling qui donne envie de visiter. Adapté à chaque portail.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zm0 10h8v8h-8v-8zm-10 0h8v8H3v-8z"/></svg>
+      </div>
+      <h3>Plan 3D</h3>
+      <p>Plans précis et esthétiques qui permettent aux acheteurs de se projeter avant même la visite.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2zm0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1z"/></svg>
+      </div>
+      <h3>Home staging virtuel</h3>
+      <p>Transformez un bien vide ou encombré en appartement magazine. Sans travaux, sans déménagement.</p>
+    </div>
+  </div>
+</div>
+
+<div class="plans-wrap">
+  <div class="plans-inner">
+    <div class="section-tag" style="text-align:center">Nos formules</div>
+    <div class="section-title" style="text-align:center;color:var(--white)">L'abonnement qui correspond à votre agence</div>
+    <div class="section-sub" style="text-align:center;margin:0 auto">Sans surprise, sans interlocuteur multiple. Choisissez votre formule et concentrez-vous sur vos clients.</div>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-name">Essentiel</div>
+        <div class="plan-price">149€</div>
+        <div class="plan-period">/mois · sans engagement</div>
+        <ul class="plan-features">
+          <li>5 biens traités / mois</li>
+          <li>Rédaction d'annonce</li>
+          <li>Photographie (15 photos)</li>
+          <li>Livraison en 48h</li>
+          <li>Support email</li>
+        </ul>
+        <a href="#" class="plan-cta">Choisir Essentiel</a>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-badge">Recommandé</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price" style="color:var(--brand)">299€</div>
+        <div class="plan-period">/mois · sans engagement</div>
+        <ul class="plan-features">
+          <li>12 biens traités / mois</li>
+          <li>Rédaction SEO optimisée</li>
+          <li>Photographie (25 photos)</li>
+          <li>Plan 3D inclus</li>
+          <li>Home staging virtuel (1 pièce)</li>
+          <li>Livraison en 24h</li>
+          <li>Support email + téléphone</li>
+        </ul>
+        <a href="#" class="plan-cta">Choisir Pro</a>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">Premium</div>
+        <div class="plan-price">499€</div>
+        <div class="plan-period">/mois · engagement 3 mois</div>
+        <ul class="plan-features">
+          <li>Biens illimités</li>
+          <li>Rédaction + article blog agence</li>
+          <li>Photos illimitées + retouche avancée</li>
+          <li>Plan 3D tous les biens</li>
+          <li>Home staging toutes pièces</li>
+          <li>Visite virtuelle 360° (1/mois)</li>
+          <li>Rapport mensuel de performance</li>
+          <li>Chargé de compte dédié</li>
+        </ul>
+        <a href="#" class="plan-cta">Choisir Premium</a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1.5rem;font-size:12px;color:rgba(255,255,255,0.4)">Option à la carte disponible · Rédaction 29€ · Photo 79€ · Plan 3D 49€ · Home staging 39€/pièce</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-tag">Pourquoi MARKET'IMMO</div>
+  <div class="section-title">Centraliser, c'est vendre plus vite</div>
+  <div class="avantages-grid">
+    <div class="avantage"><div class="avantage-num">01</div><div><h4>Un seul interlocuteur</h4><p>Fini les allers-retours avec 3 prestataires différents. Vous nous confiez le bien, on livre l'annonce.</p></div></div>
+    <div class="avantage"><div class="avantage-num">02</div><div><h4>Gain de temps réel</h4><p>En moyenne, une agence passe 4h par annonce. Avec Market'Immo : 10 minutes de brief, 48h de délai.</p></div></div>
+    <div class="avantage"><div class="avantage-num">03</div><div><h4>Cohérence visuelle</h4><p>Toutes vos annonces ont le même niveau de qualité, renforçant l'image de marque de votre agence.</p></div></div>
+    <div class="avantage"><div class="avantage-num">04</div><div><h4>Annonces qui convertissent</h4><p>Photos pro, plan 3D, rédaction SEO : les acheteurs passent à l'action. Moins de visites inutiles, plus de compromis.</p></div></div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="section-tag">Blog</div>
+  <div class="section-title">Conseils & ressources pour les agences</div>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="blog-thumb" style="background:#E6F1FB">📸</div>
+      <div class="blog-body">
+        <div class="blog-cat">Photographie</div>
+        <h3>Pourquoi les photos pro vendent 3× plus vite à Montpellier</h3>
+        <p>Une étude locale sur 200 annonces révèle l'impact réel des visuels sur le délai de vente dans l'Hérault.</p>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-thumb" style="background:#EAF3DE">✍️</div>
+      <div class="blog-body">
+        <div class="blog-cat">Rédaction</div>
+        <h3>Les 7 erreurs de rédaction qui font fuir vos acheteurs</h3>
+        <p>De "beau duplex lumineux" à la description qui déclenche des demandes de visite : ce qui fait vraiment la différence.</p>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-thumb" style="background:#FAEEDA">🏠</div>
+      <div class="blog-body">
+        <div class="blog-cat">Stratégie</div>
+        <h3>Centraliser la gestion de vos annonces : le guide complet</h3>
+        <p>Comment les meilleures agences de l'Hérault gagnent 6h par semaine en externalisant leurs annonces.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-band">
+  <h2>Un audit gratuit de vos annonces actuelles</h2>
+  <p>On analyse vos 3 dernières annonces et on vous dit exactement ce qu'il faut améliorer. Sans engagement.</p>
+  <a href="#" class="btn-dark">Je veux mon audit gratuit →</a>
+</div>
+
+<div style="background:var(--white);padding:3rem 2rem;text-align:center">
+  <div style="max-width:480px;margin:0 auto">
+    <div style="font-size:1.6rem;font-family:'Playfair Display',serif;color:var(--brand);margin-bottom:0.5rem">Vous avez une question ?</div>
+    <p style="color:var(--text-muted);margin-bottom:1.5rem;font-size:0.95rem">Notre équipe répond dans la journée. Prenez rendez-vous en 2 minutes.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="#" class="btn-primary" style="text-decoration:none">Prendre rendez-vous</a>
+      <a href="#" class="btn-secondary" style="border:1px solid var(--border);color:var(--brand);text-decoration:none">06 XX XX XX XX</a>
+    </div>
+    <p style="font-size:11px;color:rgba(0,0,0,0.3);margin-top:1.5rem">Zone de couverture : Montpellier · Hérault · Rayon 30km</p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo">MARKET<span>'</span>IMMO</div>
+  <p>© 2025 Market'Immo · Montpellier · Hérault · Mentions légales</p>
+</footer>
